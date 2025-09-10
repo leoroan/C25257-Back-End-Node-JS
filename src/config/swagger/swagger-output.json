@@ -1,0 +1,173 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "c25257-back-end-node-js",
+    "description": "Documentacion de apis para c25257-back-end-node-js."
+  },
+  "host": "localhost:8081",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Pega tu JWT aquí con el formato: Bearer <token>"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/logs/prod-list": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Obtiene una lista de logs de producción",
+        "description": "Obtiene una lista de logs de producción.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/logs/prod/file/{filename}": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Obtiene un log de producción",
+        "description": "Obtiene un log de producción específico por su nombre de archivo.",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/logs/prod/download/{filename}": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Descarga un log de producción",
+        "description": "Descarga un log de producción específico por su nombre de archivo.",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/usuarios/": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtiene todos los usuarios",
+        "description": "Obtiene una lista de todos los usuarios registrados en el sistema.",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Scope para ver diferentes vistas del usuario",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "defaultScope",
+              "configScope"
+            ]
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtiene un usuario por ID",
+        "description": "Obtiene los detalles de un usuario específico por su ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID del usuario a obtener"
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Scope para ver diferentes vistas del usuario",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "defaultScope",
+              "configScope"
+            ]
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  }
+}
