@@ -20,21 +20,4 @@ export default {
       },
     ],
   },
-
-  configScope: {
-    attributes: ['id', 'username', 'nombre', 'apellido', 'email', 'bloqueado', 'ultimoIngreso'],
-    include: [
-      {
-        association: 'rolPrincipal',
-        as: 'rolPrincipal',
-        attributes: ['id', 'nombre'],
-      },
-      {
-        association: 'permisos',
-        as: 'permisos',
-        attributes: ['accion', 'descripcion'],
-        through: { attributes: [] }
-      }
-    ],
-  }
 };

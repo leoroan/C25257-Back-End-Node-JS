@@ -32,7 +32,7 @@ export default async function configureExpress(app) {
 
   app.use(cors({
     origin: process.env.ENV_MODE === 'DESARROLLO'
-      ? '*'
+      ? [`http://localhost:${process.env.PORT}`, `http://127.0.0.1:${process.env.PORT}`, `http://localhost:*`]
       : function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
           callback(null, true);

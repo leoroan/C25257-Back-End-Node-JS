@@ -2,6 +2,7 @@ import swaggerAutogen from 'swagger-autogen';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../configuration.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,7 +59,7 @@ const doc = {
     title: 'c25257-back-end-node-js', // by default: 'REST API'
     description: 'Documentacion de apis para c25257-back-end-node-js.'         // by default: ''
   },
-  host: process.env.ENV_MODE === 'PRODUCCION' ? 'api.c25257-back-end-node-js.com' : 'localhost:8081',                 // by default: 'localhost:3000'
+  host: process.env.ENV_MODE === 'PRODUCCION' ? 'api.c25257-back-end-node-js.com' : `localhost:${config.app.port}`,                 // by default: 'localhost:3000'
   basePath: '/api',             // by default: '/'
   schemes: [process.env.ENV_MODE === 'PRODUCCION' ? 'https' : 'http'],              // by default: ['http']
   consumes: ['application/json'],             // by default: ['application/json']

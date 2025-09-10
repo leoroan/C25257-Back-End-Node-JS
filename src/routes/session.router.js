@@ -14,6 +14,7 @@ export default class sessionExtendRouter extends CustomRouter {
     super.init();
 
     this.post('/register', ["USER", "ADMIN"], passport.authenticate('jwt'), (req, res, next) => {
+      // #swagger.ignore = true
       passport.authenticate('register', (err, user, info) => {
         if (err) {
           devLogger.debug("Error en Passport Authenticate:", err);
@@ -28,6 +29,7 @@ export default class sessionExtendRouter extends CustomRouter {
 
     // LOGIN
     this.post('/login', ['PUBLIC'], async (req, res, next) => {
+      // #swagger.ignore = true
       passport.authenticate('login', async (err, user, info) => {
         if (err) {
           devLogger.debug("Error en Passport Authenticate:", err);
@@ -57,6 +59,7 @@ export default class sessionExtendRouter extends CustomRouter {
 
     // LOGOUT
     this.post('/logout', ['PUBLIC'], passport.authenticate('jwt'), async (req, res, next) => {
+      // #swagger.ignore = true
       try {
         if (!req.user) {
           return next(new Unauthorized('No hay ningún usuario autenticado conectado.'));
