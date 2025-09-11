@@ -98,6 +98,60 @@
         ]
       }
     },
+    "/session/login": {
+      "post": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "Login de usuario",
+        "description": "Permite iniciar sesión y obtener un JWT",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Credenciales de usuario",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "usuario@ejemplo.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "contraseña123"
+                }
+              },
+              "required": [
+                "username",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login exitoso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "example": "jwt_token"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Usuario o contraseña incorrectos"
+          }
+        }
+      }
+    },
     "/usuarios/": {
       "get": {
         "tags": [
@@ -182,7 +236,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Datos del nuevo usuario.",
+            "description": "Datos del nuevo usuario.(agregá otros...)",
             "required": true,
             "schema": {
               "type": "object",

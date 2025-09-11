@@ -62,7 +62,7 @@ export default class UsuarioExtendRouter extends CustomRouter {
 
         #swagger.parameters['body'] = {
             in: 'body',
-            description: 'Datos del nuevo usuario.',
+            description: 'Datos del nuevo usuario.(agregá otros...)',
             required: true,
             schema: {
                 nombre: "Juan",

@@ -29,7 +29,30 @@ export default class sessionExtendRouter extends CustomRouter {
 
     // LOGIN
     this.post('/login', ['PUBLIC'], async (req, res, next) => {
-      // #swagger.ignore = true
+      /* 
+        #swagger.tags = ['Sessions']
+        #swagger.path = '/session/login'
+        #swagger.summary = 'Login de usuario'
+        #swagger.description = 'Permite iniciar sesión y obtener un JWT'
+        #swagger.parameters['body'] = {
+          in: 'body',
+          description: 'Credenciales de usuario',
+          required: true,
+          schema: {
+            $username: 'usuario@ejemplo.com',
+            $password: 'contraseña123'
+          }
+        }
+        #swagger.responses[200] = {
+          description: 'Login exitoso',
+          schema: {
+            token: 'jwt_token'
+          }
+        }
+        #swagger.responses[401] = {
+          description: 'Usuario o contraseña incorrectos'
+        }
+      */
       passport.authenticate('login', async (err, user, info) => {
         if (err) {
           devLogger.debug("Error en Passport Authenticate:", err);
