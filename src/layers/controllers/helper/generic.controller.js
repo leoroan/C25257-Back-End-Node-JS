@@ -14,8 +14,8 @@ export default class GenericController {
 
   async findById(req, res, next) {
     try {
-      const { scope } = req.query
-      const record = await this.service.findById(req.params.id, scope);
+      const { scope, opt } = req.query
+      const record = await this.service.findById(req.params.id, scope, opt);
       return res.sendSuccess(record);
     } catch (error) {
       next(error);
@@ -63,6 +63,16 @@ export default class GenericController {
     try {
       const total = await this.service.countRegisters();
       return res.sendSuccess(total)
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async restore(req, res, next) {
+    try {
+      const { id } = req.params;
+      const result = await this.service.restore(id);
+      res.sendSuccess(result);
     } catch (error) {
       next(error);
     }

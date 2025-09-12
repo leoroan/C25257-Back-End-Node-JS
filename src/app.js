@@ -8,6 +8,10 @@ import { afterSync } from './db/afterSync.db.js';
 const app = express();
 configureExpress(app);
 
+const docsUrl = process.env.ENV_MODE === 'DESARROLLO'
+  ? `http://localhost:${process.env.PORT}/api-docs`
+  : `${process.env.FRONTEND_ORIGIN}/api-docs`;
+
 async function initializeDatabase() {
   try {
     await sequelize.authenticate();
@@ -29,12 +33,14 @@ async function initializeDatabase() {
     afterSync();
 
     app.listen(process.env.PORT, () => {
-      devLogger.info(`[SERVIDOR]: ✅, Escuchando en el puerto : [${process.env.PORT}]`);
+      devLogger.info(`[SERVIDOR Y WEBSOCKETS]: ✅, Escuchando en el puerto : [${process.env.PORT}]`);
     });
   } catch (error) {
     devLogger.error('Error conectando con la base de datos:', error);
     devLogger.warning('Reintentando en 60 segundos...');
     setTimeout(initializeDatabase, 60000);
+  } finally {
+    devLogger.info(`Documentación de la 🅰️ 🅿️ ℹ️  disponible ☑️  en: ${docsUrl}`);
   }
 }
 

@@ -23,7 +23,6 @@ export default class GenericDAO {
     return await this.model.scope(scope).findByPk(id)
   }
 
-
   async findAll(data, scope) {
     return await this.model.scope(scope).findAndCountAll(data);
   }

@@ -10,11 +10,11 @@ export default class GenericService {
     return await this.dao.create(data);
   }
 
-  async findById(id, scope = 'defaultScope') {
+  async findById(id, scope = 'defaultScope', opt = {}) {
     if (!id) {
       throw new BadRequest('El ID es obligatorio');
     }
-    const record = await this.dao.findById(id, scope);
+    const record = await this.dao.findById(id, scope, opt);
     if (!record) {
       throw new NotFound(`${this.dao.model.name} con ID ${id} no encontrado`);
     }

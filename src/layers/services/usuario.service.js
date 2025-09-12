@@ -30,7 +30,7 @@ export default class UsuarioService extends GenericService {
       data = { ...data, paranoid: false };
     }
 
-    const oldRecord = await this.dao.findById(id, 'defaultScope');
+    const oldRecord = await this.dao.findById(id, 'defaultScope', { paranoid: false });
 
     if (!oldRecord)
       throw new NotFound(`Usuario con ID ${id} no encontrado para actualizar`);

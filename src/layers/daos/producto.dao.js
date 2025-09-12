@@ -1,6 +1,6 @@
 import GenericDAO from "./helper/generic.dao.js";
 
-export default class UsuarioDAO extends GenericDAO {
+export default class ProductoDAO extends GenericDAO {
   constructor(aModel) {
     super(aModel);
   }

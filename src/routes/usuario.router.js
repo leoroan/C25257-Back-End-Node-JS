@@ -15,9 +15,7 @@ export default class UsuarioExtendRouter extends CustomRouter {
   init() {
     super.init();
 
-    // #swagger.ignore = true
-
-    this.get('/', ['ADMIN', 'USER'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.get('/', ['ADMIN'], passport.authenticate('jwt'), async (req, res, next) => {
       // #swagger.tags = ['Usuarios']
       // #swagger.path = '/usuarios/' 
       // #swagger.summary = 'Obtiene todos los usuarios'
@@ -27,10 +25,17 @@ export default class UsuarioExtendRouter extends CustomRouter {
             "bearerAuth": []
         }] 
       */
+      /* #swagger.parameters['scope'] = { 
+            in: 'query',
+            description: 'Scope para ver diferentes vistas del usuario',
+            required: false,
+            type: 'string',
+            enum: ['defaultScope', 'configScope']
+          } */
       this.controller.findAll(req, res, next);
     });
 
-    this.get('/:id', ['ADMIN', 'USER'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.get('/:id', ['ADMIN'], passport.authenticate('jwt'), async (req, res, next) => {
       // #swagger.tags = ['Usuarios']
       // #swagger.path = '/usuarios/{id}' 
       // #swagger.summary = 'Obtiene un usuario por ID'
@@ -49,7 +54,7 @@ export default class UsuarioExtendRouter extends CustomRouter {
       this.controller.findById(req, res, next);
     });
 
-    this.post('/nuevo', ['ADMIN', 'USER'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.post('/nuevo', ['ADMIN'], passport.authenticate('jwt'), async (req, res, next) => {
       /*
         #swagger.tags = ['Usuarios']
         #swagger.summary = 'Crear un nuevo usuario'
@@ -78,7 +83,7 @@ export default class UsuarioExtendRouter extends CustomRouter {
       this.controller.create(req, res, next);
     });
 
-    this.delete('/:id', ['ADMIN', 'USER'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.delete('/:id', ['ADMIN'], passport.authenticate('jwt'), async (req, res, next) => {
       // #swagger.tags = ['Usuarios']
       // #swagger.path = '/usuarios/{id}' 
       // #swagger.summary = 'Borrar un usuario por ID'
@@ -97,7 +102,7 @@ export default class UsuarioExtendRouter extends CustomRouter {
       this.controller.delete(req, res, next);
     });
 
-    this.put('/restaurar/:id', ['ADMIN', 'USER'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.put('/restaurar/:id', ['ADMIN'], passport.authenticate('jwt'), async (req, res, next) => {
       /*
       #swagger.tags = ['Usuarios']
       #swagger.path = '/usuarios/restaurar/{id}'

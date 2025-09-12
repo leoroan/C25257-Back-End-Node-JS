@@ -10,7 +10,7 @@ export default class Rol extends Model {
     }, {
       sequelize,
       modelName: 'Rol',
-      tableName: 'roles',
+      tableName: 'Roles',
       timestamps: true,
       paranoid: true,
     });

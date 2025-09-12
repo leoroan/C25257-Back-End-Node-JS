@@ -82,7 +82,12 @@ export default class sessionExtendRouter extends CustomRouter {
 
     // LOGOUT
     this.post('/logout', ['PUBLIC'], passport.authenticate('jwt'), async (req, res, next) => {
-      // #swagger.ignore = true
+      /* 
+        #swagger.tags = ['Sessions']
+        #swagger.path = '/session/logout'
+        #swagger.summary = 'Logout de usuario'
+        #swagger.description = 'Permite cerrar sesión y eliminar el JWT'
+      */
       try {
         if (!req.user) {
           return next(new Unauthorized('No hay ningún usuario autenticado conectado.'));
