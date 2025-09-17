@@ -15,14 +15,21 @@ export default class ProductoExtendRouter extends CustomRouter {
   init() {
     super.init();
 
-    this.get('/', ['PUBLIC'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.get('/', ['PUBLIC'], async (req, res, next) => {
       // #swagger.tags = ['Productos']
       // #swagger.path = '/productos/' 
       // #swagger.summary = 'Obtiene todos los productos'
       // #swagger.description = 'Obtiene una lista de todos los productos registrados en el sistema.'
+      /* #swagger.parameters['scope'] = { 
+           in: 'query',
+           description: 'Scope para ver diferentes vistas de los productos',
+           required: false,
+           type: 'string',
+           enum: ['defaultScope', 'detailScope']
+         } */
       this.controller.findAll(req, res, next);
     });
-    this.get('/:id', ['PUBLIC'], passport.authenticate('jwt'), async (req, res, next) => {
+    this.get('/:id', ['PUBLIC'], async (req, res, next) => {
       // #swagger.tags = ['Productos']
       // #swagger.path = '/productos/{id}' 
       // #swagger.summary = 'Obtiene un producto por ID'
@@ -33,6 +40,13 @@ export default class ProductoExtendRouter extends CustomRouter {
           required: true,
           type: 'string'
         } */
+      /* #swagger.parameters['scope'] = { 
+           in: 'query',
+           description: 'Scope para ver diferentes vistas de los productos',
+           required: false,
+           type: 'string',
+           enum: ['defaultScope', 'detailScope']
+         } */
       this.controller.findById(req, res, next);
     });
 

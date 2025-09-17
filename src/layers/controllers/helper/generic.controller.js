@@ -33,7 +33,6 @@ export default class GenericController {
 
   async findAll(req, res, next) {
     try {
-      // const { page, limit, scope, filters } = req.query
       const records = await this.service.findAll(req.query);
       return res.sendSuccess(records);
     } catch (error) {

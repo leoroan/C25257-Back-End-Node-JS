@@ -105,6 +105,19 @@
         ],
         "summary": "Obtiene todos los productos",
         "description": "Obtiene una lista de todos los productos registrados en el sistema.",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Scope para ver diferentes vistas de los productos",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "defaultScope",
+              "detailScope"
+            ]
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -126,6 +139,17 @@
             "required": true,
             "type": "string",
             "description": "ID del producto a obtener"
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Scope para ver diferentes vistas de los productos",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "defaultScope",
+              "detailScope"
+            ]
           }
         ],
         "responses": {
@@ -255,7 +279,7 @@
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "usuario@ejemplo.com"
+                  "example": "usuario"
                 },
                 "password": {
                   "type": "string",

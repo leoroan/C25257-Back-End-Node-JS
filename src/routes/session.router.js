@@ -39,7 +39,7 @@ export default class sessionExtendRouter extends CustomRouter {
           description: 'Credenciales de usuario',
           required: true,
           schema: {
-            $username: 'usuario@ejemplo.com',
+            $username: 'usuario',
             $password: 'contraseña123'
           }
         }
