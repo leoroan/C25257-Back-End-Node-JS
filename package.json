@@ -1,0 +1,23 @@
+{
+  "name": "c25257-back-end-node-js-pre-entrega",
+  "version": "1.0.0",
+  "description": "Primer pre-entrega del curso de Backend con Node.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoroan/C25257-Back-End-Node-JS.git"
+  },
+  "keywords": ["backend", "nodejs", "curso", "TALENTO-TECH"],
+  "author": "Leandro Maselli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoroan/C25257-Back-End-Node-JS/blob/Pre-Entrega/issues"
+  },
+  "homepage": "hhttps://github.com/leoroan/C25257-Back-End-Node-JS/blob/Pre-Entrega/README.md"
+}

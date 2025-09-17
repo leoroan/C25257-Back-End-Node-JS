@@ -27,7 +27,7 @@
 
 ### 2️⃣ Lógica de Gestión de Productos
 
-Utiliza la API FakeStore para implementar las siguientes funcionalidades. El sistema debe interpretar comandos en la terminal:
+Utiliza la [API FakeStore](https://fakestoreapi.com/) para implementar las siguientes funcionalidades. El sistema debe interpretar comandos en la terminal:
 
 #### 🔍 Consultar Todos los Productos
 
