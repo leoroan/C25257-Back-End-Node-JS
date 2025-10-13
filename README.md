@@ -69,7 +69,3 @@ Utiliza la [API FakeStore](https://fakestoreapi.com/) para implementar las sigui
 - Implementa `fetch` para interactuar con la API FakeStore.
 - Aprovecha destructuring y spread para manipular datos.
 - Utiliza métodos de arrays y strings para separar y procesar información.
-
----
-
-> ¡Organiza tu código y aprovecha las herramientas modernas de JavaScript para una solución eficiente y elegante! 🚀
