@@ -60,12 +60,3 @@ Utiliza la [API FakeStore](https://fakestoreapi.com/) para implementar las sigui
   npm run start DELETE products/<productId>
   ```
 - El programa envía una petición DELETE y muestra la respuesta.
-
----
-
-## 💡 Tips de Desarrollo
-
-- Usa `process.argv` para capturar y procesar los comandos.
-- Implementa `fetch` para interactuar con la API FakeStore.
-- Aprovecha destructuring y spread para manipular datos.
-- Utiliza métodos de arrays y strings para separar y procesar información.
