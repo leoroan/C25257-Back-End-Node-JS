@@ -1,12 +1,12 @@
 {
   "name": "c25257-back-end-node-js",
   "version": "1.0.0",
-  "description": "📝[`Pre-Entrega`](https://github.com/leoroan/C25257-Back-End-Node-JS/tree/Pre-Entrega)",
+  "description": "https://github.com/leoroan/C25257-Back-End-Node-JS/blob/main/README.md",
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.11"
   }
 }

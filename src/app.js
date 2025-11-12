@@ -1,16 +1,20 @@
 import cors from 'cors';
 import express from 'express';
 import setupSecurityMiddleware from './middleware/security.midd.js';
-import cookieParser from 'cookie-parser'
-import session from 'express-session'
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import dotenv from 'dotenv';
 import productRoutes from './routes/product.routes.js';
 
-dotenv.config();
+dotenv.config({ quiet: true });
+
 const app = express();
 
-// Configuracion
+// Configuración de seguridad general
 setupSecurityMiddleware(app);
+
+// Configuración CORS
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 app.use(cors({
   origin: process.env.ENV_MODE === 'development'
     ? '*'
@@ -23,27 +27,27 @@ app.use(cors({
     },
   credentials: true
 }));
+
+// Middlewares base
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(session({
   secret: 'Lean-dro@202X',
   resave: false,
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: process.env.ENV_MODE === 'production' ? true : false,
+    secure: process.env.ENV_MODE === 'production',
     maxAge: Number(process.env.SESSION_COOKIE_VTO)
   }
 }));
-// --- Definición de Rutas ---
 
-// versión de la API
+// --- Rutas ---
 const API_VERSION = '/api/v1';
-app.use(`${API_VERSION}/productos`, productRoutes);
-console.log(`✅ Rutas de Productos montadas en ${API_VERSION}/productos`);
 
-// Ruta de Salud (Health Check)
+app.use(`${API_VERSION}/productos`, productRoutes);
+
 app.get(`${API_VERSION}/status`, (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -52,21 +56,19 @@ app.get(`${API_VERSION}/status`, (req, res) => {
   });
 });
 
-// --- Manejo de Rutas No Encontradas (404) ---
-app.use((req, res, next) => {
-  res.status(404).json({
-    message: `Recurso no encontrado: ${req.method} ${req.originalUrl}`
+// --- ruta por defecto ---
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Bienvenido. Visite /api/v1/status para verificar el estado.'
   });
 });
 
-// --- Levantar servidor ---
-app.listen(process.env.PORT, () => {
-  console.log('+----------------------------------------------------+');
-  console.log(`| 🚀 Servidor en ejecución:                          |`);
-  console.log(`| Entorno: ${process.env.ENV_MODE.padEnd(41)} |`);
-  console.log(`| Puerto: ${String(process.env.PORT).padEnd(43)}|`);
-  console.log(`| URL Local: http://localhost:${process.env.PORT.padEnd(22)} |`);
-  console.log('+----------------------------------------------------+');
+
+// --- Manejo de 404 ---
+app.use((req, res) => {
+  res.status(404).json({
+    message: `Recurso no encontrado: ${req.method} ${req.originalUrl}`
+  });
 });
 
 export default app;
