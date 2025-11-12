@@ -31,7 +31,6 @@ export async function registerUser({ username, email, password }) {
   const existing = await findUserByEmail(email);
   if (existing) throw new Error('El usuario ya existe');
 
-  // Hash de la contraseña (aunque mockapi la guarda como texto)
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = {
