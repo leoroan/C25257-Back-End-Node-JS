@@ -3,10 +3,7 @@ import express from 'express';
 import setupSecurityMiddleware from './middleware/security.midd.js';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import dotenv from 'dotenv';
 import productRoutes from './routes/product.routes.js';
-
-dotenv.config({ quiet: true });
 
 const app = express();
 
@@ -45,8 +42,14 @@ app.use(session({
 
 // --- Rutas ---
 const API_VERSION = '/api/v1';
+app.use(`${API_VERSION}/products`, productRoutes);
 
-app.use(`${API_VERSION}/productos`, productRoutes);
+// --- rutas por defecto ---
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Bienvenido. Visite /api/v1/status para verificar el estado.'
+  });
+});
 
 app.get(`${API_VERSION}/status`, (req, res) => {
   res.status(200).json({
@@ -56,18 +59,19 @@ app.get(`${API_VERSION}/status`, (req, res) => {
   });
 });
 
-// --- ruta por defecto ---
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'Bienvenido. Visite /api/v1/status para verificar el estado.'
-  });
-});
-
-
 // --- Manejo de 404 ---
 app.use((req, res) => {
   res.status(404).json({
     message: `Recurso no encontrado: ${req.method} ${req.originalUrl}`
+  });
+});
+
+// --- Manejo de errores ---
+app.use((err, req, res, next) => {
+  console.error('💥 Error inesperado:', err.message);
+  res.status(err.status || 500).json({
+    error: true,
+    message: err.message || 'Error interno del servidor'
   });
 });
 

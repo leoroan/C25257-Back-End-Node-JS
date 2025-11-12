@@ -63,7 +63,7 @@ const setupSecurityMiddleware = (app) => {
   // porque ya no son funciones exportadas en las versiones modernas de Helmet y causaban el TypeError.
 
   // Mensaje de consola para confirmar la aplicación
-  console.log('✅ Middlewares de Seguridad (Helmet) aplicados.');
+  // console.log('✅ Middlewares de Seguridad (Helmet) aplicados.');
 };
 
 export default setupSecurityMiddleware;
