@@ -4,6 +4,8 @@ import setupSecurityMiddleware from './middleware/security.midd.js';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import productRoutes from './routes/product.routes.js';
+import authRoutes from './routes/auth.routes.js';
+
 
 const app = express();
 
@@ -43,6 +45,7 @@ app.use(session({
 // --- Rutas ---
 const API_VERSION = '/api/v1';
 app.use(`${API_VERSION}/products`, productRoutes);
+app.use(`${API_VERSION}/auth`, authRoutes);
 
 // --- rutas por defecto ---
 app.get('/', (req, res) => {
