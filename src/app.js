@@ -9,10 +9,8 @@ import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 
-// Configuración de seguridad general
 setupSecurityMiddleware(app);
 
-// Configuración CORS
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 app.use(cors({
   origin: process.env.ENV_MODE === 'development'

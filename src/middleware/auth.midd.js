@@ -4,7 +4,7 @@ export function jwtAuth(strict = true) {
   return (req, res, next) => {
     const authHeader = req.headers.authorization;    
     if (!authHeader?.startsWith('Bearer ')) {
-      if (!strict) return next(); // permite continuar si la ruta es opcionalmente protegida
+      if (!strict) return next(); 
       return res.status(401).json({ error: true, message: 'Token requerido' });
     }
     try {

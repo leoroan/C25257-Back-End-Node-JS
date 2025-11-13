@@ -9,4 +9,5 @@ router.get('/:id', jwtAuth(true), productController.getProduct);
 router.post('/', jwtAuth(true), productController.createProduct);
 router.put('/:id', jwtAuth(true), productController.updateProduct);
 router.delete('/:id', jwtAuth(true), productController.deleteProduct);
+
 export default router;

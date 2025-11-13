@@ -2,12 +2,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Resolver la ruta absoluta del .env que está en la raíz
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '../.env'), quiet: true });
 
-// IMPORT DINÁMICO (garantiza que dotenv se ejecute antes)
 const { default: app } = await import('./app.js');
 
 const PORT = process.env.PORT || 3000;
