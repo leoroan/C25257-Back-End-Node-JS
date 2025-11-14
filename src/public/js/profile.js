@@ -13,10 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("profileEmail").textContent = email;
   document.getElementById("profileRole").textContent = `Rol: ${user.role}`;
 
-  // Avatar inicial
   document.getElementById("profileInitial").textContent = name[0].toUpperCase();
 
-  // Acciones
   document.getElementById("goHome").addEventListener("click", () => {
     window.location.href = "/";
   });

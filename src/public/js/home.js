@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   `;
 
   try {
-    const res = await fetch("http://localhost:8081/api/v1/products");;
+    // const res = await fetch("http://localhost:8081/api/v1/products");;
 
+    const res = await fetch("/api/v1/products");
     if (!res.ok) {
       throw new Error("Error al obtener productos");
     }
@@ -37,36 +38,42 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="card h-100 shadow-sm rounded-3 border-0 product-card">
           
           <img src="${p.image}" 
-               class="card-img-top rounded-top-3" 
-               alt="${escapeHTML(p.name)}"
-               style="height:200px; object-fit:cover;">
+           class="card-img-top rounded-top-3" 
+           alt="${escapeHTML(p.name)}"
+           style="height:200px; object-fit:cover;">
           
           <div class="card-body d-flex flex-column p-3">
           
-            <h5 class="card-title text-truncate mb-2">${escapeHTML(p.name)}</h5>
-            <p class="card-text text-muted small mb-2 flex-grow-1">${escapeHTML(p.description)}</p>
+        <h5 class="card-title text-truncate mb-2">${escapeHTML(p.name)}</h5>
+        <p class="card-text text-muted small mb-2 flex-grow-1">${escapeHTML(p.description)}</p>
           
-            <div class="mt-auto pt-2">
-              <p class="text-center mb-2"><strong class="text-success">$${p.price}</strong></p>
+        <div class="mt-auto pt-2">
+          <p class="text-center mb-2"><strong class="text-success">$${p.price}</strong></p>
           
-              <button class="btn btn-outline-success w-100 py-2 mb-2"
-                onclick="addToCartHome('${p.id}', '${escapeHTML(p.name)}', ${p.price}, '${escapeHTML(p.image)}')">
-                <i class="bi bi-cart-plus me-1"></i> Agregar al carrito
-              </button>
+          ${user ? `
+            <button class="btn btn-outline-success w-100 py-2 mb-2"
+          onclick="addToCartHome('${p.id}', '${escapeHTML(p.name)}', ${p.price}, '${escapeHTML(p.image)}')">
+          <i class="bi bi-cart-plus me-1"></i> Agregar al carrito
+            </button>
+          ` :
+          `<a href="/login" class="btn btn-outline-primary w-100 py-2 mb-2">
+              <i class="bi bi-door-open me-1"></i> Loggeate/Registrate para comprar!
+            </a>
+          `}
           
-              ${isAdmin ? `
-                <div class="d-flex gap-2">
-                  <button class="btn btn-outline-warning flex-fill" onclick="openEditModal('${p.id}')">
-                    <i class="bi bi-pencil-square"></i>
-                  </button>
-                  <button class="btn btn-outline-danger flex-fill" onclick="confirmDeleteProduct('${p.id}', '${escapeHTML(p.name)}')">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </div>
-              ` : ""}
+          ${isAdmin ? `
+            <div class="d-flex gap-2">
+          <button class="btn btn-outline-warning flex-fill" onclick="openEditModal('${p.id}')">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-outline-danger flex-fill" onclick="confirmDeleteProduct('${p.id}', '${escapeHTML(p.name)}')">
+            <i class="bi bi-trash"></i>
+          </button>
             </div>
+          ` : ""}
+        </div>
           </div>
-              
+          
         </div>
       `;
 

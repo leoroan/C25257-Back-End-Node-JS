@@ -177,7 +177,7 @@
     if (userJson && token) {
       try {
         const user = JSON.parse(userJson);
-        const res = await fetch(`http://localhost:8081/api/v1/auth/${user.id}/save-cart`, {
+        const res = await fetch(`/api/v1/auth/${user.id}/save-cart`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

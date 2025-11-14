@@ -25,7 +25,7 @@ function logout() {
   const token = localStorage.getItem("token");
 
   if (user && token && cart.length) {
-    fetch(`http://localhost:8081/api/v1/auth/${user.id}/save-cart`, {
+    fetch(`/api/v1/auth/${user.id}/save-cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!navItems) return;
 
   if (!user) {
-    navItems.style.display = "none";   // Oculta todo el menú
+    navItems.style.display = "none"; 
   } else {
-    navItems.style.display = "flex";   // Lo muestra normalmente
+    navItems.style.display = "flex";  
   }
 });
 

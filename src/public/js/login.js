@@ -1,94 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-
-//   // ---- LOGIN ----
-//   const loginForm = document.getElementById("loginForm");
-
-//   if (loginForm) {
-//     loginForm.addEventListener("submit", async (e) => {
-//       e.preventDefault();
-
-//       const email = document.getElementById("email").value.trim();
-//       const password = document.getElementById("password").value.trim();
-
-//       try {
-//         const res = await fetch("http://localhost:8081/api/v1/auth/login", {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({ email, password })
-//         });
-
-//         const data = await res.json();
-
-//         if (!res.ok) {
-//           alert(data.message || "Error al iniciar sesión");
-//           return;
-//         }
-
-//         localStorage.setItem("token", data.token);
-//         localStorage.setItem("user", JSON.stringify(data.user));
-
-//         if (data.user.cart && Array.isArray(data.user.cart)) {
-//           localStorage.setItem("cart", JSON.stringify(data.user.cart));
-//         }
-
-//         alert("Bienvenido " + data.user.username);
-//         window.location.href = "/home";
-
-//       } catch (err) {
-//         console.error(err);
-//         alert("Error de conexión");
-//       }
-//     });
-//   }
-
-//   // ---- REGISTRO ----
-//   const regForm = document.getElementById("registerForm");
-
-//   if (regForm) {
-//     regForm.addEventListener("submit", async (e) => {
-//       e.preventDefault();
-
-//       const username = document.getElementById("reg_username").value.trim();
-//       const email = document.getElementById("reg_email").value.trim();
-//       const password = document.getElementById("reg_password").value.trim();
-//       const avatar = document.getElementById("reg_avatar").value.trim();
-
-//       try {
-//         const res = await fetch("http://localhost:8081/api/v1/auth/register", {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({
-//             username,
-//             email,
-//             password,
-//             avatar: avatar || undefined
-//           })
-//         });
-
-//         const data = await res.json();
-
-//         if (!res.ok) {
-//           alert(data.message || "No se pudo registrar");
-//           return;
-//         }
-
-//         alert("Registro exitoso. Ya podés iniciar sesión.");
-
-//         const modal = bootstrap.Modal.getInstance(
-//           document.getElementById("registerModal")
-//         );
-//         modal.hide();
-
-//       } catch (err) {
-//         console.error(err);
-//         alert("Error de conexión");
-//       }
-//     });
-//   }
-
-// });
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // --- Helpers ---
@@ -133,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Entrando...`;
 
       try {
-        const res = await fetch("http://localhost:8081/api/v1/auth/login", {
+        const res = await fetch("/api/v1/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
@@ -193,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       try {
-        const res = await fetch("http://localhost:8081/api/v1/auth/register", {
+        const res = await fetch("/api/v1/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
