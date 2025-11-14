@@ -1,4 +1,62 @@
-<%- include('layout', { title: 'Productos' , body: ` <h2 class="mb-4 text-center fw-bold">Mis Talento-Productos</h2>
+<%- include('layout', { title: 'Productos' , pageScript: '/js/home.js' , body: ` <h2
+  class="mb-4 text-center fw-bold">Mis Talento-Productos</h2>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Productos</h3>
+    <button id="btnOpenCreate" class="btn btn-outline-primary d-none">
+      <i class="bi bi-plus-circle"></i> Crear producto
+    </button>
+  </div>
+
   <div class="row" id="productList"></div>
-  <script src="/js/home.js"></script>
+
+  <!-- MODAL CREATE / EDIT -->
+  <div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 id="productModalTitle" class="modal-title"></h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="productForm">
+
+            <input type="hidden" id="prod_id">
+
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input id="prod_name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Descripción</label>
+              <textarea id="prod_description" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Precio</label>
+              <input id="prod_price" type="number" step="0.01" class="form-control" required>
+            </div>
+
+            <!-- <div class="mb-3">
+              <label class="form-label">Imagen (URL)</label>
+              <input id="prod_image" type="url" class="form-control" required placeholder="Este campo va a llevar una imagen segun su nombre, aleatoria." disabled>
+            </div> -->
+
+            <div class="text-center">
+              <button id="prodSaveBtn" class="btn btn-success w-100">
+                <span class="label">Guardar</span>
+                <div class="spinner-border spinner-border-sm ms-2 d-none"></div>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   `}) %>
