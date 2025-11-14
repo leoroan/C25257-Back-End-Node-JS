@@ -1,5 +1,86 @@
 # base node C25257-Back-End-Node-JS
 
+## V1.2 con frontEn *server-side*
+# 🛠️ Implementación de Vistas con EJS y Consumo de API Real
+
+En este proyecto se incorporó una capa de vistas utilizando **EJS** para darle una interfaz simple al backend sin requerir un frontend framework completo.
+
+## 🎨 Estructura de Vistas
+
+Se crearon páginas básicas para:
+
+* **Login**
+* **Registro**
+* **Home**
+* **Carrito**
+* **Perfil del usuario**
+
+Todas las vistas se renderizan desde Express usando plantillas **EJS**, y se apoyan en un layout común para mantener estilos y estructura compartida.
+
+## 🔐 Autenticación y Protección de Rutas
+
+El flujo de autenticación funciona 100% contra la API real:
+
+* El usuario inicia sesión enviando sus credenciales al endpoint `/auth/login`.
+* Si la API valida los datos, devuelve el **usuario** y un **JWT**.
+* El token se almacena en `localStorage`.
+* Las vistas protegidas verifican la existencia del token antes de permitir el acceso.
+
+Si el usuario no está autenticado:
+
+* Se lo redirige automáticamente al login.
+
+## 🛒 Manejo del Carrito
+
+El carrito funciona del lado del cliente con **localStorage** para mantener la simplicidad.
+Incluye:
+
+* Agregar productos
+* Mostrar contenido del carrito
+* Persistir antes de cerrar sesión
+
+Cuando el usuario se desloguea:
+
+* Se envía el contenido del carrito a la API mediante el endpoint `POST /auth/:id/save-cart`.
+* El backend actualiza el usuario guardando su carrito actual.
+
+## 👤 Perfil Dinámico
+
+En la vista de **perfil** no hay valores fijos:
+Se toman los datos del usuario autenticado desde `localStorage`, incluidos:
+
+* username
+* email
+* avatar
+* carrito guardado
+
+De esta forma, el perfil refleja el estado real del usuario actual.
+
+## 🔗 Consumo de la API desde el Frontend
+
+Todas las vistas interactúan directamente con la API mediante `fetch()`.
+Los endpoints utilizados incluyen:
+
+* `/auth/login`
+* `/auth/register`
+* `/auth/:id/save-cart`
+* `/products` (si corresponde)
+* Otros endpoints necesarios para la navegación y el carrito
+
+## 📦 Resultado
+
+Con esta estructura se obtiene una interfaz simple pero funcional, que:
+
+* Consume la API real del backend
+* Maneja sesiones con JWT
+* Mantiene el estado del carrito
+* Protege vistas según autenticación
+* Usa EJS para un render rápido y limpio
+
+Es una base ligera que permite probar todo el backend sin necesidad de un frontend complejo.
+
+---
+
 # 🧩 API Backend con Express, Arquitectura por Capas y Autenticación JWT
 ---
 

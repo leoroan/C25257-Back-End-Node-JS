@@ -36,7 +36,6 @@ const setupSecurityMiddleware = (app) => {
   app.use(helmet.frameguard({ action: 'deny' }));
 
   // HSTS (HTTP Strict Transport Security): Forzar HTTPS.
-  // Solo activar en producción con HTTPS real
   app.use(
     helmet.hsts({
       maxAge: 63072000, // 2 años
@@ -58,12 +57,7 @@ const setupSecurityMiddleware = (app) => {
   app.use(helmet.crossOriginResourcePolicy({ policy: 'same-origin' }));
   app.use(helmet.crossOriginOpenerPolicy({ policy: 'same-origin' }));
   app.use(helmet.crossOriginEmbedderPolicy({ policy: 'require-corp' }));
-
-  // NOTA: Se eliminaron helmet.expectCt, helmet.dnsPrefetchControl y helmet.permittedCrossDomainPolicies
-  // porque ya no son funciones exportadas en las versiones modernas de Helmet y causaban el TypeError.
-
-  // Mensaje de consola para confirmar la aplicación
-  // console.log('✅ Middlewares de Seguridad (Helmet) aplicados.');
+  console.log('✅ Middlewares de Seguridad (Helmet) aplicados.');
 };
 
 export default setupSecurityMiddleware;

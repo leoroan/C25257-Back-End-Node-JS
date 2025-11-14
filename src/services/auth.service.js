@@ -11,6 +11,21 @@ export async function findUserByEmail(email) {
   return users.length > 0 ? new User(users[0]) : null;
 }
 
+export async function updateUserById(id, userData) {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(userData)
+  });
+}
+
+export async function getUserById(id) {
+  const res = await fetch(`${API_URL}/${id}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return new User(data);
+}
+
 export async function loginUser(email, password) {
   const user = await findUserByEmail(email);
   if (!user) throw new Error('Usuario no encontrado');
@@ -19,7 +34,7 @@ export async function loginUser(email, password) {
   if (!isValid) throw new Error('Credenciales inválidas');
 
   const token = jwt.sign(
-    { id: user.id, email: user.email, username: user.username },
+    { id: user.id, email: user.email, username: user.username, cart: user.cart },
     JWT_SECRET,
     { expiresIn: '2h' }
   );
@@ -29,7 +44,7 @@ export async function loginUser(email, password) {
 
 export async function registerUser({ username, email, password }) {
   const existing = await findUserByEmail(email);
-  if (existing) throw new Error('El usuario ya existe');
+  if (existing.ok) throw new Error('El usuario ya existe');
 
   const hashedPassword = await bcrypt.hash(password, 10);
 

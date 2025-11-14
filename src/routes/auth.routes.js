@@ -6,5 +6,6 @@ const router = Router();
 router.post('/login', authController.login);
 router.post('/register', authController.register);
 router.post('/logout', authController.logout);
+router.post("/:id/save-cart", authController.saveCart);
 
 export default router;

@@ -1,0 +1,22 @@
+<%- include("layout", { title: "Perfil" , body: ` <h2>Mi Perfil</h2>
+
+  <div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-avatar">
+      <span id="profileInitial">U</span>
+    </div>
+
+    <h2 id="profileName">Nombre</h2>
+    <p id="profileEmail" class="profile-email">email@example.com</p>
+
+    <div class="profile-actions">
+      <button id="goHome" class="btn-primary">🏠 Volver al Home</button>
+      <button id="logout" class="btn-danger">🚪 Cerrar Sesión</button>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/authGuard.js"></script>
+  <script src="/js/profile.js"></script>
+  ` }) %>

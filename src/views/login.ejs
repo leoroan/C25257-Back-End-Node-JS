@@ -1,0 +1,71 @@
+<%- include("layout", { title: "Login" , body: ` <div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+
+    <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+    <form id="loginForm">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input id="email" type="email" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input id="password" type="password" class="form-control" required>
+      </div>
+
+      <button class="btn btn-primary w-100 mb-3">Entrar</button>
+    </form>
+
+    <p class="text-center text-muted">
+      ¿No tenés cuenta?
+      <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrate</a>
+    </p>
+
+  </div>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Crear Cuenta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="registerForm">
+
+            <div class="mb-3">
+              <label class="form-label">Usuario</label>
+              <input id="reg_username" type="text" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input id="reg_email" type="email" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Contraseña</label>
+              <input id="reg_password" type="password" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Avatar (URL opcional)</label>
+              <input id="reg_avatar" type="text" class="form-control" placeholder="https://..." />
+            </div>
+
+            <button class="btn btn-success w-100">Registrarme</button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/login.js"></script>
+  `}) %>

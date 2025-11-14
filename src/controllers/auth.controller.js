@@ -1,5 +1,27 @@
 import * as authService from '../services/auth.service.js';
 
+export async function saveCart(req, res) {
+  try {
+    const userId = req.params.id;
+    const { cart } = req.body;
+
+    if (!Array.isArray(cart)) {
+      return res.status(400).json({ error: "Cart debe ser un array" });
+    }
+
+    const user = await authService.getUserById(userId);
+    if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
+
+    user.cart = cart;
+
+    await authService.updateUserById(userId, user);
+
+    res.json({ message: "Carrito guardado", cart });
+  } catch (err) {
+    res.status(500).json({ error: "Error guardando carrito" });
+  }
+}
+
 export async function login(req, res) {
   try {
     const { email, password } = req.body;
@@ -11,7 +33,7 @@ export async function login(req, res) {
 
     res.status(200).json({
       message: 'Login exitoso',
-      user: { id: user.id, username: user.username, email: user.email },
+      user: { id: user.id, username: user.username, email: user.email, cart: user.cart },
       token
     });
   } catch (err) {
