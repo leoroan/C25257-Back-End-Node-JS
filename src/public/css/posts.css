@@ -1,0 +1,83 @@
+body {
+  background: url("/img/cork-board.jpg") center/cover no-repeat fixed;
+  font-family: "Comic Sans MS", "Patrick Hand", "Segoe Print", sans-serif;
+}
+
+.posts-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+
+.post-card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  background: var(--randomColor);
+
+  /* Caos lindo */
+  transform: translate(var(--randomOffsetX), var(--randomOffsetY)) rotate(var(--randomRotate));
+
+  /* Relieve + textura */
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.25),
+    0 0 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+
+  border-radius: 6px;
+
+  /* efecto pegado */
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  transition: transform .2s;
+}
+
+/* Hover: levanta un toque pero NO cambia la posición random */
+.post-card:hover {
+  transform:
+    translate(var(--randomOffsetX), var(--randomOffsetY)) scale(1.08) rotate(var(--randomRotate));
+}
+
+.post-card strong {
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.post-card p {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  font-size: 1rem;
+}
+
+.post-card small {
+  font-size: .75rem;
+  opacity: .7;
+  display: block;
+  margin-top: .4rem;
+}
+
+/* Spinner */
+#loadingSpinner {
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Animación al aparecer */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.28s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    /* leve zoom sin pisar rotate+translate */
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}

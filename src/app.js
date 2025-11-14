@@ -55,6 +55,7 @@ app.get("/login", (req, res) => res.render("login"));
 app.get("/home", (req, res) => res.render("home"));
 app.get("/profile", (req, res) => res.render("profile"));
 app.get("/cart", (req, res) => res.render("cart"));
+app.get("/posts", (req, res) => res.render("posts"));
 
 // --- Rutas ---
 const API_VERSION = '/api/v1';
