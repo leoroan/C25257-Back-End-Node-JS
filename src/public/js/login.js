@@ -182,6 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("reg_email").value.trim();
       const password = document.getElementById("reg_password").value.trim();
       const avatar = document.getElementById("reg_avatar").value.trim();
+      const roleCheckbox = document.getElementById("reg_admin");
+      const role = roleCheckbox && roleCheckbox.checked ? 'admin' : 'user';
       const btn = regForm.querySelector("button");
 
       // Spinner ON
@@ -198,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
             username,
             email,
             password,
+            role,
             avatar: avatar || undefined
           })
         });

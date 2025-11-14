@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("profileName").textContent = name;
   document.getElementById("profileEmail").textContent = email;
+  document.getElementById("profileRole").textContent = `Rol: ${user.role}`;
 
   // Avatar inicial
   document.getElementById("profileInitial").textContent = name[0].toUpperCase();

@@ -33,7 +33,7 @@ export async function login(req, res) {
 
     res.status(200).json({
       message: 'Login exitoso',
-      user: { id: user.id, username: user.username, email: user.email, cart: user.cart },
+      user: { id: user.id, username: user.username, email: user.email, cart: user.cart, role: user.role },
       token
     });
   } catch (err) {

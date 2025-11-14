@@ -1,18 +1,24 @@
 <%- include("layout", { title: "Perfil" , body: ` <div
   style="height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: sans-serif; text-align: center; padding: 2rem;">
-  <div
-    style="width: 80px; height: 80px; background-color: #007bff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">
+
+  <div class="bg-primary rounded-circle d-flex justify-content-center align-items-center mb-3 fs-2 m-2 p-4 text-white" style="width: 80px; height: 80px;">
     <span id="profileInitial">U</span>
   </div>
 
-  <h1 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 500;" id="profileName">Nombre</h1>
-  <p style="color: #666; margin: 0 0 2rem 0; font-size: 0.9rem;" id="profileEmail">email@example.com</p>
+  <div class="d-flex flex-column">
+    <h1 class="fw-bold fs-2" id="profileName">Nombre</h1>
+    <p style="color: #666; margin: 0 0 2rem 0; font-size: 0.9rem;" id="profileEmail">email@example.com</p>
+    <p class="text-muted" id="profileRole">someRole</p>
+  </div>
 
-  <a href="/" style="display: block; margin-bottom: 1rem; text-decoration: none; color: #007bff; font-size: 1rem;">🏠
-    Volver al Home</a>
-  <button id="logout"
-    style="padding: 0.5rem 1rem; background: none; border: 1px solid #ccc; border-radius: 4px; color: #dc3545; font-size: 1rem; cursor: pointer;">🚪
-    Cerrar Sesión</button>
+  <div class="mt-3 w-100 d-flex justify-content-center">
+      <a href="/" class="btn btn-outline-primary me-sm-2" role="button" aria-label="Volver al Home">
+        🏠 Volver al Home
+      </a>
+      <button id="logout" class="btn btn-outline-danger" aria-label="Cerrar sesión">
+        🚪 Cerrar Sesión
+      </button>
+    </div>
   </div>
 
   <script src="/js/authGuard.js"></script>
