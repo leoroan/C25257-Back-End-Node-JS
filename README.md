@@ -1,7 +1,8 @@
-# base node C25257-Back-End-Node-JS
-
 ## V1.2 con frontEn *server-side*
 # 🛠️ Implementación de Vistas con EJS y Consumo de API Real
+========================================================================================
+|| ## Por simplicidad se debe mantener el `localhost` y el puerto levantado en `8081` ||
+========================================================================================
 
 En este proyecto se incorporó una capa de vistas utilizando **EJS** para darle una interfaz simple al backend sin requerir un frontend framework completo.
 
