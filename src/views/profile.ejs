@@ -1,21 +1,19 @@
-<%- include("layout", { title: "Perfil" , body: ` <h2>Mi Perfil</h2>
-
-  <div class="profile-container">
-  <div class="profile-card">
-    <div class="profile-avatar">
-      <span id="profileInitial">U</span>
-    </div>
-
-    <h2 id="profileName">Nombre</h2>
-    <p id="profileEmail" class="profile-email">email@example.com</p>
-
-    <div class="profile-actions">
-      <button id="goHome" class="btn-primary">🏠 Volver al Home</button>
-      <button id="logout" class="btn-danger">🚪 Cerrar Sesión</button>
-    </div>
+<%- include("layout", { title: "Perfil" , body: ` <div
+  style="height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: sans-serif; text-align: center; padding: 2rem;">
+  <div
+    style="width: 80px; height: 80px; background-color: #007bff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">
+    <span id="profileInitial">U</span>
   </div>
-</div>
 
+  <h1 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 500;" id="profileName">Nombre</h1>
+  <p style="color: #666; margin: 0 0 2rem 0; font-size: 0.9rem;" id="profileEmail">email@example.com</p>
+
+  <a href="/" style="display: block; margin-bottom: 1rem; text-decoration: none; color: #007bff; font-size: 1rem;">🏠
+    Volver al Home</a>
+  <button id="logout"
+    style="padding: 0.5rem 1rem; background: none; border: 1px solid #ccc; border-radius: 4px; color: #dc3545; font-size: 1rem; cursor: pointer;">🚪
+    Cerrar Sesión</button>
+  </div>
 
   <script src="/js/authGuard.js"></script>
   <script src="/js/profile.js"></script>

@@ -55,12 +55,12 @@
     setCart(cart);
   };
 
-  window.removeItem = function removeItem(index) {
-    const cart = getCart();
-    if (index < 0 || index >= cart.length) return;
-    cart.splice(index, 1);
-    setCart(cart);
+  window.removeItem = function askRemoveItem(index) {
+    pendingDeleteIndex = index;
+    const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
+    modal.show();
   };
+
 
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -84,6 +84,23 @@
       tc.style.zIndex = 1080;
       document.body.appendChild(tc);
     }
+  });
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const confirmBtn = document.getElementById("confirmDeleteBtn");
+    const modalEl = document.getElementById("confirmDeleteModal");
+    const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+    confirmBtn.addEventListener("click", () => {
+      if (pendingDeleteIndex != null) {
+        const cart = getCart();
+        cart.splice(pendingDeleteIndex, 1);
+        setCart(cart);
+        pendingDeleteIndex = null;
+        showToast("Producto eliminado", "warning");
+      }
+      bsModal.hide();
+    });
   });
 
 
@@ -241,3 +258,5 @@
   window.getCart = getCart;
   window.setCartLocal = setCart;
 })();
+
+let pendingDeleteIndex = null;

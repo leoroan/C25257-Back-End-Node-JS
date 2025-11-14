@@ -42,7 +42,7 @@ export async function loginUser(email, password) {
   return { token, user };
 }
 
-export async function registerUser({ username, email, password }) {
+export async function registerUser({ username, email, password, role }) {
   const existing = await findUserByEmail(email);
   if (existing.ok) throw new Error('El usuario ya existe');
 
@@ -54,6 +54,7 @@ export async function registerUser({ username, email, password }) {
     password: hashedPassword,
     avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${username}`,
     cart: [],
+    role: role,
     createdAt: new Date().toISOString()
   };
 

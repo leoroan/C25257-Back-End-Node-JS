@@ -43,12 +43,12 @@ export async function login(req, res) {
 
 export async function register(req, res) {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     if (!username || !email || !password)
       return res.status(400).json({ error: true, message: 'Faltan campos requeridos' });
 
-    const { token, user } = await authService.registerUser({ username, email, password });
+    const { token, user } = await authService.registerUser({ username, email, password, role: role || 'user' });
 
     res.status(201).json({
       message: 'Usuario registrado correctamente',
