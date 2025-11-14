@@ -1,6 +1,10 @@
 # base node C25257-Back-End-Node-JS
 
-# 🧩 API Backend con Express, Arquitectura por Capas y Autenticación JWT
+# BIG-UPDATE BACK+FRONT 
+*una solucion e implementacion del backend propuesto*
+[RAMA: BACK+FRONT](https://github.com/leoroan/C25257-Back-End-Node-JS/tree/main-with-ejs)
+
+## 🧩 API Backend con Express, Arquitectura por Capas y Autenticación JWT
 ---
 
 ## ⚙️ Estructura general del proyecto
