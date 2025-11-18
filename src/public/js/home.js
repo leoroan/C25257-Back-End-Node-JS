@@ -116,7 +116,7 @@ window.confirmDeleteProduct = function confirmDeleteProduct(id, name) {
 
   const token = localStorage.getItem("token");
 
-  fetch(`http://localhost:8081/api/v1/products/${id}`, {
+  fetch(`/api/v1/products/${id}`, {
     method: "DELETE",
     headers: {
       "Authorization": "Bearer " + token
@@ -151,7 +151,7 @@ window.openEditModal = async function (id) {
   try {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:8081/api/v1/products/${id}`, {
+    const res = await fetch(`/api/v1/products/${id}`, {
       headers: { "Authorization": "Bearer " + token }
     });
 
@@ -192,8 +192,8 @@ productForm.addEventListener("submit", async (e) => {
   const token = localStorage.getItem("token");
 
   const url = id
-    ? `http://localhost:8081/api/v1/products/${id}`
-    : `http://localhost:8081/api/v1/products`;
+    ? `/api/v1/products/${id}`
+    : `/api/v1/products`;
 
   const method = id ? "PUT" : "POST";
 
