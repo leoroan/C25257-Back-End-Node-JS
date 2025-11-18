@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("profileInitial").textContent = name[0].toUpperCase();
 
-  document.getElementById("goHome").addEventListener("click", () => {
-    window.location.href = "/";
-  });
+  // document.getElementById("goHome").addEventListener("click", () => {
+  //   window.location.href = "/";
+  // });
 
   document.getElementById("logout").addEventListener("click", () => {
     localStorage.clear();
